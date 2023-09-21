@@ -14,6 +14,7 @@ public class WebConfig implements WebMvcConfigurer{
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/board/**")
 		.addResourceLocations("file:///c:/Temp/react_web/board/");
+		
 		registry.addResourceHandler("/board/editor/**")
 		.addResourceLocations("file:///c:/Temp/react_web/board/editor/");
 	
