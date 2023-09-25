@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button1 } from "../util/Buttons";
 import Input from "../util/InputFrm";
+import { TextEditor } from "../util/TextEditor";
 const BoardFrm = (props) => {
   const boardTitle = props.boardTitle;
   const setBoardTitle = props.setBoardTitle;
@@ -16,6 +17,8 @@ const BoardFrm = (props) => {
   const setFileList = props.setFileList;
   const buttonEvent = props.buttonEvent;
   const type = props.type;
+  const delFileNo = props.delFileNo;
+  const setDelFileNo = props.setDelFileNo;
   const [newFileList, setNewFileList] = useState([]);
   const thumbnailChange = (e) => {
     const files = e.currentTarget.files;
@@ -45,7 +48,7 @@ const BoardFrm = (props) => {
     <div className="board-frm-wrap">
       <div className="board-frm-top">
         <div className="board-thumbnail">
-          {boardImg === "" ? (
+          {boardImg === null ? (
             <img src="/image/default.png" />
           ) : (
             <img src={boardImg} />
@@ -107,14 +110,19 @@ const BoardFrm = (props) => {
         </div>
       </div>
       <div className="board-content-box">
-        <textarea
+        <TextEditor
+          data={boardDetail}
+          setData={setBoardDetail}
+          url="/board/contentImg"
+        />
+        {/* <textarea
           onChange={(e) => {
             const changeValue = e.currentTarget.value;
             setBoardDetail(changeValue);
           }}
         >
           {boardDetail}
-        </textarea>
+        </textarea> */}
       </div>
       <div className="board-btn-box">
         <Button1 text="작성하기" clickEvent={buttonEvent} />

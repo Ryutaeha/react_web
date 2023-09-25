@@ -1,0 +1,18 @@
+.board-tbl {
+  border-spacing: 0;
+}
+
+.board-tbl th {
+  background-color: #000;
+
+  color: #fff;
+}
+
+.board-tbl td,
+.board-tbl th {
+  border: 1px solid black;
+
+  padding: 10px;
+
+  text-align: center;
+}

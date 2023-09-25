@@ -4,9 +4,10 @@ import { Routes, Route } from "react-router-dom";
 import Join from "./component/member/Join";
 import Login from "./component/member/Login";
 import { useEffect, useState } from "react";
-import MemberMain from "./component/member/MemberMain";
+import { MemberMain } from "./component/member/MemberMain";
 import BoardMain from "./component/board/BoardMain";
-
+import { AdminMain } from "./component/admin/Admin";
+import { Main } from "./component/common/Main";
 function App() {
   const [isLogin, setIsLogin] = useState(true);
   //useEffect hooks : 초기 state값을 최초에 수정해서 사용하는 경우
@@ -28,6 +29,11 @@ function App() {
       <Header isLogin={isLogin} setIsLogin={setIsLogin} />
       <div className="content">
         <Routes>
+          <Route path="/" element={<Main />} />
+          <Route
+            path="/admin/*"
+            element={<AdminMain isLogin={isLogin}></AdminMain>}
+          ></Route>
           <Route
             path="/board/*"
             element={<BoardMain isLogin={isLogin} setIsLogin={setIsLogin} />}

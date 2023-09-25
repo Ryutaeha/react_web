@@ -2,7 +2,8 @@ import { Route, Routes } from "react-router-dom";
 import "./board.css";
 import BoardList from "./BoardList";
 import { BoardWrite } from "./BoardWrite";
-
+import { BoardView } from "./BoardView";
+import { BoardModify } from "./BoardModify";
 const BoardMain = (props) => {
   const isLogin = props.isLogin;
   const setIsLogin = props.setIsLogin;
@@ -10,6 +11,8 @@ const BoardMain = (props) => {
     <div className="board-all-wrap">
       <div className="board-title">BOARD</div>
       <Routes>
+        <Route path="modify" element={<BoardModify />}></Route>
+        <Route path="view/*" element={<BoardView isLogin={isLogin} />} />
         <Route path="write" element={<BoardWrite />} />
         <Route path="*" element={<BoardList isLogin={isLogin} />} />
       </Routes>

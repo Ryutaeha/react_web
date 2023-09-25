@@ -1,5 +1,8 @@
 package kr.or.iei.member.model.service;
 
+import java.util.List;
+import java.util.Map;
+
 import org.aspectj.weaver.bcel.BcelAccessForInlineMunger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.iei.JwtUtil;
+import kr.or.iei.PageInfo;
 import kr.or.iei.member.model.dao.MemberDao;
 import kr.or.iei.member.model.vo.Member;
 
@@ -63,5 +67,14 @@ public class MemberService {
 	@Transactional
 	public int pwChangeMember(Member member) {
 		return memberDao.changePw(member);
+	}
+
+	public Map memberList(int reqPage) {
+		int totalCount = memberDao.totalCount();
+		int numPerPage = 10;
+		int pageNaviSize = 5;
+		PageInfo pi = pagination.getPageInfo(reqPage, numPerPage, pageNaviSize, totalCount);
+		List memberList = memberDao.memberList(pi);
+ 		return null;
 	}
 }

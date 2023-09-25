@@ -1,5 +1,7 @@
 package kr.or.iei.member.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -67,5 +69,9 @@ public class MemberController {
 	public int changePw(@RequestBody Member member, @RequestAttribute String memberId) {
 		member.setMemberId(memberId);
 		return memberService.pwChangeMember(member);
+	}
+	@GetMapping(value = "/list/{reqPage}")
+	public Map list(@PathVariable int reqPage) {
+		return memberService.memberList(reqPage);
 	}
 }
